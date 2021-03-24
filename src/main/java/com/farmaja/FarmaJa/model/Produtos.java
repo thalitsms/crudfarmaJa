@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.farmaja.FarmaJa.model.Categoria;
 
@@ -22,13 +24,15 @@ public class Produtos
 	private long id;
 
 	@NotNull
+	@Size (min = 5, max = 500)
 	private String titulo;
 	
 	@NotNull
+	@Size (min = 5, max = 1500)
 	private String descricao;
 	
 	@NotNull 
-	private int marca;
+	private String marca;
 	
 	@NotNull 
 	private int quantidade;
@@ -40,6 +44,8 @@ public class Produtos
 	@NotNull 
 	boolean ativo;
 	
+	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
 	
@@ -76,6 +82,23 @@ public class Produtos
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+	
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
 
 	public int getQuantidade() {
 		return quantidade;
@@ -85,4 +108,11 @@ public class Produtos
 		this.quantidade = quantidade;
 	}
 	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 }

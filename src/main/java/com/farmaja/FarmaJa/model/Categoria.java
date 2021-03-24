@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-import com.farmaja.FarmaJa.model.Produtos;
+
 
 @Entity
 @Table (name = "tb_categoria")
@@ -23,11 +23,11 @@ public class Categoria
 	private long id;
 
 	@NotNull
-	@Size (min = 5, max = 100)
+	@Size (min = 4, max = 100)
 	private String titulo;
 
 	@NotNull
-	@Size (min = 10, max = 500)
+	@Size (min = 5, max = 1500)
 	private String descricao;
 
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
